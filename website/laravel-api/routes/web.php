@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FunctionalityController;
+use App\Http\Controllers\UtilizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/functionalities', [FunctionalityController::class, 'index']);
+Route::get('/use', [UtilizationController::class, 'index']);
+Route::post('/contact-us', [ContactController::class, 'store']);
