@@ -21,6 +21,7 @@
     "@react-three/fiber": "^8.10.0",
     "@studio-freight/hamo": "^0.5.2",
     "@studio-freight/tempus": "^0.0.30",
+    "axios": "^1.2.3",
     "clsx": "^1.2.1",
     "glslify-loader": "^2.0.0",
     "gsap": "npm:gsap-trial@^3.11.4",

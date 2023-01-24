@@ -7,7 +7,6 @@ import { Title } from 'components/intro'
 import { Link } from 'components/link'
 import { ListItem } from 'components/list-item'
 
-import { projects } from 'content/projects'
 import { useScroll } from 'hooks/use-scroll'
 import { Layout } from 'layouts/default'
 import { button, useControls } from 'leva'
@@ -17,6 +16,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
 import s from './home.module.scss'
+import useFetch  from '../../hooks/use-fetch'
 
 const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
@@ -64,6 +64,7 @@ export default function Home() {
 
   const [theme, setTheme] = useState('dark')
   const lenis = useStore(({ lenis }) => lenis)
+  const projects = useFetch(`${process.env.NEXT_PUBLIC_HOST}/partners`);
 
   useControls(
     'lenis',
@@ -424,7 +425,7 @@ export default function Home() {
             </p>
           </aside>
           <ul className={s.list}>
-            {projects.map(({ title, source, href }, i) => (
+            {projects!= null && projects.map(({ title, source, href }, i) => (
               <li key={i}>
                 <ListItem
                   title={title}

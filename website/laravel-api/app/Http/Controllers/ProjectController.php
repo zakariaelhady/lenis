@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Utilization;
+use App\Models\Project;
 use App\Http\Requests\StoreUtilizationRequest;
 use App\Http\Requests\UpdateUtilizationRequest;
 
-class UtilizationController extends Controller
+class ProjectController extends Controller
 {
     public function index()
     {
-        return Utilization::all();
+        return Project::all()->toJson();
     }
 }

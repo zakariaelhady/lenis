@@ -7,6 +7,7 @@ import { clamp, mapRange } from 'lib/maths'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
+import useFetch  from '../../hooks/use-fetch'
 
 const AppearTitle = dynamic(
   () => import('components/appear-title').then((mod) => mod.AppearTitle),
@@ -15,36 +16,13 @@ const AppearTitle = dynamic(
 
 import s from './feature-cards.module.scss'
 
-const cards = [
-  { text: 'Run scroll in the main thread' },
-
-  {
-    text: (
-      <>
-        Lightweight <br /> (under 3kb)
-      </>
-    ),
-  },
-  { text: 'Made for 2022+' },
-  { text: 'Bring your own animation library' },
-  {
-    text: <>CONTROL THE SCROLL EASING DURATION</>,
-  },
-  { text: 'Use any element as scroller' },
-  { text: 'Enjoy horizontal + vertical support' },
-  { text: 'Feel free to use “position: sticky” again' },
-  {
-    text: 'touch support',
-  },
-]
-
 export const FeatureCards = () => {
   const element = useRef()
   const [setRef, rect] = useRect()
   const { height: windowHeight } = useWindowSize()
 
   const [current, setCurrent] = useState()
-
+  const cards = useFetch(`${process.env.NEXT_PUBLIC_HOST}/features`);
   useScroll(
     ({ scroll }) => {
       const start = rect.top - windowHeight * 2
@@ -61,7 +39,6 @@ export const FeatureCards = () => {
     },
     [rect]
   )
-
   return (
     <div
       ref={(node) => {
@@ -80,11 +57,12 @@ export const FeatureCards = () => {
           </p>
         </aside>
         <div ref={element}>
-          {cards.map((card, index) => (
+          {cards!=null &&
+            cards.map((card, index) => (
             <SingleCard
               key={index}
               index={index}
-              text={card.text}
+              text={card.title}
               number={index + 1}
               current={index <= current - 1}
             />

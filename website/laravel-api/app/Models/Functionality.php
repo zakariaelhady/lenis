@@ -11,6 +11,6 @@ class Functionality extends Eloquent
     use HasFactory;
 
     protected $fillable = [
-        'number','title',
+        'title',
     ];
 }

@@ -10,7 +10,7 @@ class FunctionalityController extends Controller
 {
     public function index()
     {
-        return Functionality::all();
+        return Functionality::all()->toJson();
     }
 
 }

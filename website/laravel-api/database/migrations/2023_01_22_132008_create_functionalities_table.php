@@ -17,23 +17,21 @@ class CreateFunctionalitiesTable extends Migration
 
         Schema::create('functionalities', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
             $table->string("title");
         });
 
-        $default_func=['1'=>'RUN SCROLL IN THE MAIN THREAD',
-        '2'=>'LIGHTWEIGHT (UNDER 3KB)',
-        '3'=>'MADE FOR 2022+',
-        '4'=>'BRING YOUR OWN ANIMATION LIBRARY',
-        '5'=>'CONTROL THE SCROLL EASING DURATION',
-        '6'=>'USE ANY ELEMENT AS SCROLLER',
-        '7'=>'ENJOY HORIZONTAL + VERTICAL SUPPORT',
-        '8'=>'FEEL FREE TO USE “POSITION: STICKY” AGAIN',
-        '9'=>'TOUCH SUPPORT'];
+        $default_func=['RUN SCROLL IN THE MAIN THREAD',
+        'LIGHTWEIGHT (UNDER 3KB)',
+        'MADE FOR 2022+',
+        'BRING YOUR OWN ANIMATION LIBRARY',
+        'CONTROL THE SCROLL EASING DURATION',
+        'USE ANY ELEMENT AS SCROLLER',
+        'ENJOY HORIZONTAL + VERTICAL SUPPORT',
+        'FEEL FREE TO USE “POSITION: STICKY” AGAIN',
+        'TOUCH SUPPORT'];
         
-        foreach ($default_func as $key => $value){
+        foreach ($default_func as  $value){
             $items[] = [
-                'number' => $key,
                 'title' => $value
             ];
         }
