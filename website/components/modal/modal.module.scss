@@ -1,0 +1,35 @@
+@import 'styles/_functions';
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  @include desktop {
+    font-size: desktop-vw(14px);
+    letter-spacing: -0.01em;
+  }
+  .styledModal {
+    background: rgba(3,3,3,0.25);
+    width: 500px;
+    height: 450px;
+    border-radius: 15px;
+    padding: 15px;
+  }
+  .styledModalWrapper {
+    width: 500px;
+    height: 450px;
+  }
+  .styledModalHeader  {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
+  }
+}

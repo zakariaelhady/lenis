@@ -6,6 +6,7 @@ import { Card } from 'components/card'
 import { Title } from 'components/intro'
 import { Link } from 'components/link'
 import { ListItem } from 'components/list-item'
+import { Modal } from 'components/modal'
 
 import { useScroll } from 'hooks/use-scroll'
 import { Layout } from 'layouts/default'
@@ -20,6 +21,7 @@ import useFetch  from '../../hooks/use-fetch'
 
 const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
+const Contact = dynamic(() => import('icons/contact-us.svg'), { ssr: false })
 
 const Parallax = dynamic(
   () => import('components/parallax').then((mod) => mod.Parallax),
@@ -65,6 +67,7 @@ export default function Home() {
   const [theme, setTheme] = useState('dark')
   const lenis = useStore(({ lenis }) => lenis)
   const projects = useFetch(`${process.env.NEXT_PUBLIC_HOST}/partners`);
+  const [showModal, setShowModal] = useState(false);
 
   useControls(
     'lenis',
@@ -245,11 +248,17 @@ export default function Home() {
           <Button
             className={cn(s.cta, introOut && s.in)}
             arrow
-            icon={<GitHub />}
-            href="https://github.com/studio-freight/lenis"
+            icon={<Contact />}
+            onClick={() => setShowModal(true)}
           >
-            Check it out on github
+            Contact Us
           </Button>
+          { showModal && 
+            <Modal 
+            onClose={() => setShowModal(false)}
+            show={showModal}> 
+            </Modal>
+          }
         </div>
       </section>
       <section className={s.why}>
