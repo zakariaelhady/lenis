@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import s from './contact-form.module.scss'
 import { Button } from '../button'
 import cn from 'clsx'
@@ -34,7 +34,7 @@ export const ContactForm = () => {
             setFormStatus("Retry");
           }
         })
-        .then((data) => {});
+        // .then((data) => {});
   }
 
   return (

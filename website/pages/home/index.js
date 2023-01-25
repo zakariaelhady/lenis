@@ -20,7 +20,6 @@ import s from './home.module.scss'
 import useFetch  from '../../hooks/use-fetch'
 
 const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
-const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
 const Contact = dynamic(() => import('icons/contact-us.svg'), { ssr: false })
 
 const Parallax = dynamic(
@@ -247,7 +246,6 @@ export default function Home() {
           </h1>
           <Button
             className={cn(s.cta, introOut && s.in)}
-            arrow
             icon={<Contact />}
             onClick={() => setShowModal(true)}
           >

@@ -2,7 +2,7 @@ import { useEffect, useState,useRef } from "react";
 import s from './modal.module.scss'
 import { ContactForm } from '../contact-form'
 
-export const Modal = ({ onClose, children, title }) => {
+export const Modal = ({ onClose }) => {
   const [isBrowser, setIsBrowser] = useState(false);
   const modalWrapperRef = useRef();
 
